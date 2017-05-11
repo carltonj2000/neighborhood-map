@@ -1,0 +1,26 @@
+{
+  "name": "neighborhood-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "push:mkdir": "mkdir -p /tmp/cjAll/html/",
+    "push:rsync": "rsync -a dist/ /tmp/cjAll/html/",
+    "push": "npm-run-all push:mkdir push:rsync",
+    "pull": "rsync -a /tmp/cjAll/html/ ./",
+    "push:web": "rsync -a dist/ 138.197.203.77:/mnt/volume-sfo2-01/cj/carltonathomedotcom/",
+    "refresh:browser": "xdotool search --name 'Neighborhood Map' windowactivate --sync %1 key F5  windowactivate $(xdotool getactivewindow)",
+    "build:html": "pug --pretty --out dist templates/index.pug",
+    "prod:html": "pug --out dist templates/index.pug",
+    "watch:html": "watch 'npm run build:html' templates/",
+    "build": "npm-run-all --parallel build:*",
+    "release:web": "npm-run-all build push:web refresh:browser"
+  },
+  "author": "Carlton Joseph",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.0.2",
+    "pug": "^2.0.0-rc.1",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
