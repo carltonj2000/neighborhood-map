@@ -5,4 +5,4 @@ The code in this repository is for the
 Neighborhood Map Project.
 
 The project can be seen at the
-[Neighborhood Map Web Site](),
+[Neighborhood Map Web Site](https://carltonj2000.github.io/neighborhood-map/),
