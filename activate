@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+xdotool windowactivate 50331813 &&
+xdotool key F5 &&
+xdotool windowactivate $(xdotool getactivewindow)
