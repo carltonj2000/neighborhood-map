@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "push:mkdir": "mkdir -p /tmp/cjAll/html/",
-    "push:rsync": "rsync -a dist /tmp/cjAll/html/",
+    "push:rsync": "rsync -a dist/ /tmp/cjAll/html/",
     "push": "npm-run-all push:mkdir push:rsync",
     "pull": "rsync -a /tmp/cjAll/html/ ./",
     "push:web": "rsync -a dist/ 138.197.203.77:/mnt/volume-sfo2-01/cj/carltonathomedotcom/",
