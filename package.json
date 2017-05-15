@@ -11,16 +11,42 @@
     "push:web": "rsync -a dist/ 138.197.203.77:/mnt/volume-sfo2-01/cj/carltonathomedotcom/",
     "refresh:browser": "xdotool search --name 'Neighborhood Map' windowactivate --sync %1 key F5  windowactivate $(xdotool getactivewindow)",
     "build:html": "pug --pretty --out dist templates/index.pug",
-    "prod:html": "pug --out dist templates/index.pug",
     "watch:html": "watch 'npm run build:html' templates/",
+    "build:css": "postcss -o dist/styles/styles.css styles/*.css",
+    "watch:css": "watch 'npm run build:css' styles/",
+    "eslint:js": "eslint js",
+    "babel:md": "mkdir -p dist/js",
+    "babel:process": "babel js -d dist/js",
+    "babel:js": "npm-run-all babel:md babel:process",
+    "//": [
+      "During script development use the lines below for testing options",
+      "Always leave some test line below not to fight with commas"
+    ],
+    "build:js": "npm-run-all eslint:js babel:js",
+    "watch:js": "watch 'npm run build:js' js/",
     "build": "npm-run-all --parallel build:*",
-    "release:web": "npm-run-all build push:web refresh:browser"
+    "watch": "npm-run-all --parallel watch:*",
+    "serve": "browser-sync start -f dist -s dist",
+    "watchNserve": "npm-run-all --parallel watch serve",
+    "dev": "npm-run-all build watchNserve",
+    "release:web": "npm-run-all build push:web refresh:browser",
+    "test": "pug --pretty --out dist templates/index.pug"
   },
   "author": "Carlton Joseph",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
     "npm-run-all": "^4.0.2",
+    "postcss": "^6.0.1",
+    "postcss-cli": "^4.0.0",
     "pug": "^2.0.0-rc.1",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "watch": "^1.0.2"
   }
 }

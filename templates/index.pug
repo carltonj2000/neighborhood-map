@@ -2,10 +2,14 @@ doctype html
 html(lang="en")
   head
     title Neighborhood Map
-    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="styles/styles.css")
   body
     h1 Neighborhood Map
+    div(id="map")
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js")
-    script(src="js/entry.js")
+    script(src="js/main.js")
+    // Note that the API key below is locked to my home IP address.
+    // In order to run this file please replace it with you own API key
+    script(async,defer,src="https://maps.googleapis.com/maps/api/js?key=" + process.env.GMAPS_API_KEY + "&callback=initMap")

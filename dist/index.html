@@ -2,12 +2,16 @@
 <html lang="en">
   <head>
     <title>Neighborhood Map</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
     <h1>Neighborhood Map</h1>
+    <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
-    <script src="js/entry.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Note that the API key below is locked to my home IP address.-->
+    <!-- In order to run this file please replace it with you own API key-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Dms8Xk5TWoSMDGskiuKiG5SEnI4iYZ8&amp;callback=initMap"></script>
   </body>
 </html>
